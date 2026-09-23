@@ -1,46 +1,58 @@
-# BT4.3 – Form Calculator dùng chung sự kiện với `sender`
+# 🧮 Bài Tập 4.3 – Form Máy Tính (Calculator)
 
-> **Môn:** Lập trình Windows Forms với C# | **Framework:** .NET 10.0
+Bài tập thiết kế giao diện máy tính, áp dụng kỹ thuật **dùng chung một Event Handler** cho nhiều nút bấm thông qua tham số `object sender`.
 
-## Mục tiêu
-Thiết kế Form máy tính, gán **chung 1 Event Handler** cho 10 nút bấm số (0–9) bằng tham số `object sender`.
+---
 
-## Tính năng
+## 📋 Mô tả
 
-| Control | Chức năng |
-|---------|-----------|
-| `txtDisplay` | Màn hình hiển thị kết quả |
-| `btn0` → `btn9` | 10 nút số — dùng **chung** `NumberButton_Click(object sender, ...)` |
-| `btnAdd` / `btnSub` / `btnMul` / `btnDiv` | Phép toán `+` `-` `*` `/` |
-| `btnEquals` | Tính kết quả `=` |
-| `btnClear` | Xóa toàn bộ `C` |
-| `btnBackspace` | Xóa ký tự cuối `⌫` |
-| `btnDot` | Dấu thập phân `.` |
-
-## Kỹ thuật chính
+Máy tính cơ bản hỗ trợ 4 phép tính, điểm nổi bật là 10 nút số (0–9) đều gán **cùng một hàm xử lý sự kiện** `NumberButton_Click`. Bên trong hàm, dùng kỹ thuật ép kiểu `(Button)sender` để lấy giá trị của nút vừa bấm.
 
 ```csharp
-// Gán chung 1 handler cho 10 nút số
+// 10 nút số dùng chung 1 event handler
 private void NumberButton_Click(object sender, EventArgs e)
 {
-    Button btn = (Button)sender;   // ép kiểu để lấy Text
+    Button btn = (Button)sender;  // ép kiểu để lấy Text của nút
     txtDisplay.Text += btn.Text;
 }
 ```
 
-## Demo
+---
 
-![Calculator - Giao diện](Screenshot%202026-09-23%20164601.png)
+## 🖼️ Giao diện
 
-## Cách chạy
+![Giao diện máy tính](Screenshot%202026-09-23%20164601.png)
 
+---
+
+## ⚙️ Các thành phần chính
+
+| Tên Control | Chức năng |
+|-------------|-----------|
+| `txtDisplay` | Màn hình hiển thị số và kết quả |
+| `btn0` → `btn9` | 10 nút số — dùng **chung** `NumberButton_Click` |
+| `btnAdd` `btnSub` `btnMul` `btnDiv` | Các phép toán `+` `−` `×` `÷` |
+| `btnEquals` | Tính và hiển thị kết quả `=` |
+| `btnClear` | Xóa toàn bộ, về `0` |
+| `btnBackspace` | Xóa ký tự cuối cùng `⌫` |
+| `btnDot` | Nhập dấu thập phân `.` |
+
+---
+
+## 🚀 Cách chạy
+
+**Bằng Visual Studio:**
+1. Mở file `BT4_3_Calculator.sln`
+2. Nhấn `F5` để chạy
+
+**Bằng terminal:**
 ```bash
 dotnet run
 ```
 
-hoặc mở file `BT4_3_Calculator.sln` bằng **Visual Studio 2022+** và nhấn `F5`.
+---
 
-## Yêu cầu hệ thống
+## 🛠️ Yêu cầu
 - .NET 10.0 SDK
-- Windows OS (Windows Forms)
-- Visual Studio 2022 (khuyến nghị)
+- Windows OS
+- Visual Studio 2022 trở lên
